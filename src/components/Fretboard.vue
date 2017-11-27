@@ -5,7 +5,7 @@
       <br/>
         <div class="fret" v-for="fret in fretboardConfig">
           <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
-            <div class="circle" :class="note.n">{{note.n}}</div>
+            <span class="badge badge-pill badge-primary notebadge" :class="note.n">{{note.n}}</span>
           </div>
         </div>
     </div>
@@ -73,6 +73,12 @@
 
   .note {
     flex:1;
+  }
+
+  .notebadge {
+    position: relative;
+    top:15px;
+    left:-10px;
   }
 
   .circle {
