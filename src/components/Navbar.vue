@@ -1,14 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#/">Guitar Tools</a>
+    <a class="navbar-brand" href="#/">
+      <img src="http://agilepartners.com/images/ttk/ttk-icon-large-shad.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Guitar Tools</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mx-auto">
         <!-- ROOT NOTE -->
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown first">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRootNote" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Root Note (<b>C</b>)
           </a>
@@ -33,6 +35,11 @@
           </div>
         </li>
       </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#/howtouse">How to Use</a>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
@@ -44,16 +51,12 @@
 </script>
 
 <style>
-  .navbar {
-    z-index: 9999;
-    text-align:center;
+
+  .first {
+    padding-left:100px;
   }
 
-  /* center */
-  .navbar .navbar-nav {
-    text-align:center;
-  }
-  .navbar .navbar-collapse {
-    text-align: center;
+  .navbar {
+    z-index: 9999;
   }
 </style>

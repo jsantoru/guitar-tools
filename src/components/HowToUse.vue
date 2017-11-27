@@ -1,5 +1,5 @@
 <template>
-  <div>{{msg}}</div>
+  <div class="how-to-use"><p>{{msg}}</p></div>
 </template>
 <script>
   export default {
@@ -12,5 +12,7 @@
   }
 </script>
 <style scoped>
-
+  .how-to-use {
+    text-align:center;
+  }
 </style>
