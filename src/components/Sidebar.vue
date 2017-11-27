@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="btn-group-vertical btn-group-sm wide" role="group">
-      <button type="button" class="btn btn-primary">Root</button>
+      <button type="button" class="btn btn-primary"><span class="badge badge-light">Root</span></button>
       <button type="button" class="btn btn-primary">b9</button>
       <button type="button" class="btn btn-secondary">2/9</button>
       <button type="button" class="btn btn-primary">m3/#9</button>
