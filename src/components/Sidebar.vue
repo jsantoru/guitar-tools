@@ -1,18 +1,19 @@
 <template>
   <div class="sidebar">
-    <ul>
-      <li>Root</li>
-      <li>b9</li>
-      <li>2/9</li>
-      <li>m3/#9</li>
-      <li>M3</li>
-      <li>4</li>
-      <li>#4/b5</li>
-      <li>5</li>
-      <li>#5/b6</li>
-      <li>m7</li>
-      <li>M7</li>
-    </ul>
+    <div class="btn-group-vertical btn-group-sm wide" role="group">
+      <button type="button" class="btn btn-primary">Root</button>
+      <button type="button" class="btn btn-primary">b9</button>
+      <button type="button" class="btn btn-secondary">2/9</button>
+      <button type="button" class="btn btn-primary">m3/#9</button>
+      <button type="button" class="btn btn-secondary">M3</button>
+      <button type="button" class="btn btn-primary">4</button>
+      <button type="button" class="btn btn-secondary">#4/b5</button>
+      <button type="button" class="btn btn-primary">5</button>
+      <button type="button" class="btn btn-secondary">#5/b6</button>
+      <button type="button" class="btn btn-secondary">6</button>
+      <button type="button" class="btn btn-secondary">m7</button>
+      <button type="button" class="btn btn-secondary">7</button>
+    </div>
   </div>
 </template>
 
@@ -22,6 +23,7 @@
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'
+
       }
     }
   }
@@ -29,5 +31,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .sidebar {
+    text-align:center;
+  }
+  .wide {
+    width:100%;
+  }
+  .r {
+    background-color:green;
+  }
 </style>

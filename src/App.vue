@@ -57,7 +57,7 @@ html, body, .container {
 }
 
 .middle-sidebar {
-  flex: 1; /* relative size to divs at the same level */
+  flex: .5; /* relative size to divs at the same level */
   overflow: auto; /* enable scroll bar */
 
   /* needed for its child divs */
