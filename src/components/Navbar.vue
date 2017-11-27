@@ -69,5 +69,7 @@
 </script>
 
 <style>
-
+  .navbar {
+    z-index: 9999;
+  }
 </style>
