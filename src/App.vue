@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="middle-content">
-          <fretboard></fretboard>
+          <router-view></router-view>
         </div>
       </div>
       <div class="bottom">
@@ -21,12 +21,14 @@
 import Sidebar from './components/Sidebar'
 import Fretboard from './components/Fretboard'
 import Navbar from './components/Navbar'
+import HowToUse from './components/HowToUse'
 export default {
   name: 'app',
   components: {
     'sidebar': Sidebar,
     'fretboard': Fretboard,
-    'navbar': Navbar
+    'navbar': Navbar,
+    'howtouse': HowToUse
   }
 }
 </script>
