@@ -79,8 +79,4 @@ html, body, .container {
   /*height:20px;*/
   flex:.5; /* relative size to divs at the same level */
 }
-
-.middle div {
-  border: solid black 1px;
-}
 </style>

@@ -4,8 +4,8 @@
     <div class="fretboard">
       <br/>
         <div class="fret" v-for="fret in fretboardConfig">
-          <div class="note" v-for="note in fret">
-            <div :class="[note, circleClass]">{{note}}</div>
+          <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
+            <div class="circle" :class="note.n">{{note.n}}</div>
           </div>
         </div>
     </div>
@@ -34,12 +34,13 @@
          7
          */
         fretboardConfig : [
-          ["4",   "m7", "m3", "b6", "r",  "4"],
-          ["b5",  "7",  "3",  "6",  "b9", "b5"],
-          ["5",   "r",  "4",  "m7", "2",  "5"]
-        ],
-        circleClass: "circle"
+          [{n:"4"},   {n:"m7"}, {n:"m3"}, {n:"b6"}, {n:"r"},  {n:"4", isLast:true}],
+          [{n:"b5"},  {n:"7"},  {n:"3"},  {n:"6"},  {n:"b9"}, {n:"b5", isLast:true}],
+          [{n:"5"},   {n:"r"},  {n:"4"},  {n:"m7"}, {n:"2"},  {n:"5", isLast:true}]
+        ]
       }
+    },
+    methods: {
     }
   }
 </script>
@@ -124,4 +125,9 @@
   .seven {
 
   }
+
+  .fullborder {
+    border: solid black 1px;
+  }
+
 </style>
