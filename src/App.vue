@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <div class="top">TOP</div>
+      <div class="top"><navbar></navbar></div>
       <div class="middle">
         <div class="middle-sidebar">
           <div class="middle-sidebar-top">
@@ -20,12 +20,13 @@
 <script>
 import Sidebar from './components/Sidebar'
 import Fretboard from './components/Fretboard'
+import Navbar from './components/Navbar'
 export default {
   name: 'app',
   components: {
-
-    'sidebar':Sidebar,
-    'fretboard':Fretboard
+    'sidebar': Sidebar,
+    'fretboard': Fretboard,
+    'navbar': Navbar
   }
 }
 </script>
@@ -46,7 +47,7 @@ html, body, .container {
 }
 
 .top {
-  height: 75px; /* static height nav */
+  height: 50px; /* static height nav */
   /*flex:1;*/ /* relative size to divs at the same level */
 }
 
@@ -75,7 +76,8 @@ html, body, .container {
 }
 
 .bottom {
-  flex: 1; /* relative size to divs at the same level */
+  /*height:20px;*/
+  flex:.5; /* relative size to divs at the same level */
 }
 
 .middle div {
