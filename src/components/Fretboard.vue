@@ -2,9 +2,10 @@
   <div class="fretboard-container">
     <div class="left"></div>
     <div class="fretboard">
+      <br/>
         <div class="fret" v-for="fret in fretboardConfig">
           <div class="note" v-for="note in fret">
-            {{note}}
+            <div class="circle">{{note}}</div>
           </div>
         </div>
     </div>
@@ -15,6 +16,7 @@
 <script>
   export default {
     name: 'Fretboard',
+
     data () {
       return {
         /*
@@ -63,10 +65,26 @@
 
     display: flex;
     flex-direction:row;
+
+    height:50px;
   }
 
   .note {
     flex:1;
+  }
+
+  .circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+
+    background: red;
+
+    position: relative;
+    top:15px;
+    left:-10px;
+
+    text-align:center;
   }
 
   .r {
