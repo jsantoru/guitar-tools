@@ -47,7 +47,7 @@ html, body, .container {
 }
 
 .top {
-  height: 50px; /* static height nav */
+  height: 75px; /* static height nav */
   /*flex:1;*/ /* relative size to divs at the same level */
 }
 
