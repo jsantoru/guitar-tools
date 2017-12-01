@@ -12,13 +12,10 @@
         <!-- ROOT NOTE -->
         <li class="nav-item dropdown first">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRootNote" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Root Note (<b>C</b>)
+            Root Note (<b>{{rootNote}}</b>)
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a v-for="rootNoteOption in rootNoteOptions" class="dropdown-item" @click="selectRootNote(rootNoteOption)">{{rootNoteOption}}</a>
           </div>
         </li>
 
@@ -46,7 +43,24 @@
 
 <script>
   export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    data() {
+        return {
+          rootNoteOptions: [
+            "C","D"
+          ]
+        }
+    },
+    computed: {
+      rootNote() {
+          return this.$root.$data.rootNote;
+      }
+    },
+    methods: {
+      selectRootNote(rootNote) {
+        this.$root.$data.rootNote = rootNote;
+      }
+    }
   }
 </script>
 

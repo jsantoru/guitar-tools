@@ -22,12 +22,12 @@
     data () {
       return {
         intervals: this.$root.$data.intervals,
-        rootNote: "C",
         numFrets: 12,
         fretboard : [],
 
         rootFirstFret: {
-          "C": [{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"b6"},{intervalId:"r"},{intervalId:"4", isLast:true}]
+          "C": [{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"b6"},{intervalId:"r"},{intervalId:"4", isLast:true}],
+          "D": [{intervalId:"m3"},{intervalId:"b6"},{intervalId:"b9"},{intervalId:"b5"},{intervalId:"m7"},{intervalId:"m3", isLast:true}]
           // TODO: remaining keys
         },
 
@@ -50,8 +50,17 @@
     },
 
     computed: {
+      rootNote() {
+          return this.$root.$data.rootNote;
+      },
       firstFret() {
         return this.rootFirstFret[this.rootNote];
+      }
+    },
+
+    watch: {
+      rootNote(newRootNote) {
+        this.buildFretboard();
       }
     },
 
