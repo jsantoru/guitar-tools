@@ -55,6 +55,22 @@
             {
               name:"Major",
               intervalIds:["r","3","5"]
+            },
+            {
+              name:"Major 7",
+              intervalIds:["r","3","5", "7"]
+            },
+            {
+              name:"Minor",
+              intervalIds:["r","m3","5"]
+            },
+            {
+              name:"Minor 7",
+              intervalIds:["r","m3","5", "m7"]
+            },
+            {
+              name:"Altered Dominant",
+              intervalIds:["r","b9","m3","3","b5","b6","m7"]
             }
           ]
         }
