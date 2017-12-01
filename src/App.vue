@@ -81,4 +81,44 @@ html, body, .container {
   /*height:20px;*/
   flex:.5; /* relative size to divs at the same level */
 }
+
+
+/* COLORS */
+.r {
+  background-color:blue;
+}
+.b9 {
+  background-color:orange;
+}
+.two {
+  background-color:yellowgreen;
+}
+.m3 {
+  background-color:darkred;
+}
+.three {
+  background-color:red;
+}
+.four {
+  background-color:blueviolet;
+}
+.b5 {
+  background-color:orangered;
+}
+.five {
+  background-color:green;
+
+}
+.b6 {
+  background-color:lightblue;
+}
+.six {
+  background-color:hotpink;
+}
+.m7 {
+  background-color:darkturquoise;
+}
+.seven {
+  background-color:lightgreen;
+}
 </style>

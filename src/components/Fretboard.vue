@@ -3,9 +3,9 @@
     <div class="left"></div>
     <div class="fretboard">
       <br/>
-        <div class="fret" v-for="fret in fretboardConfig">
+        <div class="fret" v-for="fret in fretboard">
           <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
-            <span class="badge badge-pill badge-primary notebadge" :class="note.n">{{note.n}}</span>
+            <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.interval)">{{note.interval}}</span>
           </div>
         </div>
     </div>
@@ -19,37 +19,72 @@
 
     data () {
       return {
-        /*
-         r
-         b9
-         2
-         m3
-         3
-         4
-         b5
-         5
-         b6
-         6
-         m7
-         7
-         */
-        fretboardConfig : [
-          [{n:"4"},   {n:"m7"}, {n:"m3"}, {n:"b6"}, {n:"r"},  {n:"4", isLast:true}],
-          [{n:"b5"},  {n:"7"},  {n:"3"},  {n:"6"},  {n:"b9"}, {n:"b5", isLast:true}],
-          [{n:"5"},   {n:"r"},  {n:"4"},  {n:"m7"}, {n:"2"},  {n:"5", isLast:true}],
-          [{n:"4"},   {n:"m7"}, {n:"m3"}, {n:"b6"}, {n:"r"},  {n:"4", isLast:true}],
-          [{n:"b5"},  {n:"7"},  {n:"3"},  {n:"6"},  {n:"b9"}, {n:"b5", isLast:true}],
-          [{n:"5"},   {n:"r"},  {n:"4"},  {n:"m7"}, {n:"2"},  {n:"5", isLast:true}],
-          [{n:"4"},   {n:"m7"}, {n:"m3"}, {n:"b6"}, {n:"r"},  {n:"4", isLast:true}],
-          [{n:"b5"},  {n:"7"},  {n:"3"},  {n:"6"},  {n:"b9"}, {n:"b5", isLast:true}],
-          [{n:"5"},   {n:"r"},  {n:"4"},  {n:"m7"}, {n:"2"},  {n:"5", isLast:true}],
-          [{n:"4"},   {n:"m7"}, {n:"m3"}, {n:"b6"}, {n:"r"},  {n:"4", isLast:true}],
-          [{n:"b5"},  {n:"7"},  {n:"3"},  {n:"6"},  {n:"b9"}, {n:"b5", isLast:true}],
-          [{n:"5"},   {n:"r"},  {n:"4"},  {n:"m7"}, {n:"2"},  {n:"5", isLast:true}]
-        ]
+        numFrets: 12,
+        intervals : ["r", "b9", "2", "m3", "3", "4", "b5", "5", "b6", "6", "m7", "7"],
+        firstFret : [{interval:"4"},{interval:"m7"},{interval:"m3"},{interval:"b6"},{interval:"r"},{interval:"4", isLast:true}],
+        fretboard : [],
+        intervalClass :
+          {
+            "r":"r",
+            "b9":"b9",
+            "2":"two",
+            "m3":"m3",
+            "3":"three",
+            "4":"four",
+            "b5":"b5",
+            "5":"five",
+            "b6":"b6",
+            "6":"six",
+            "m7":"m7",
+            "7":"seven"
+          }
       }
     },
+
     methods: {
+      getClass(interval) {
+        return this.intervalClass[interval];
+      },
+      getNextInterval(interval) {
+        let index = this.intervals.indexOf(interval);
+        if(index == 11) {
+          return this.intervals[0];
+        }
+        return this.intervals[index+1];
+      },
+
+      buildFretboard() {
+        this.fretboard = [this.firstFret];
+        let prevFret = this.firstFret;
+        for(let i=0; i<this.numFrets-1; i++) {
+            let fret = this.buildNextFret(prevFret);
+            this.fretboard.push(fret);
+            prevFret = fret;
+        }
+        console.log(this.fretboard);
+      },
+
+      buildNextFret(prevFret) {
+        let nextFret = [];
+        // build the next fret
+        for(let i=0; i<prevFret.length; i++) {
+          let currInterval = prevFret[i].interval;
+          let nextIntervalObj = {}
+          nextIntervalObj.interval = this.getNextInterval(currInterval);
+          if(i == prevFret.length-1) {
+            nextIntervalObj.isLast = true;
+          }
+
+          nextFret[i] = nextIntervalObj
+        }
+        //console.log(nextFret);
+        return nextFret;
+      }
+    },
+
+    created: function() {
+      // build the fretboard
+      this.buildFretboard();
     }
   }
 </script>
@@ -104,45 +139,10 @@
     text-align:center;
   }
 
-  .r {
-    background-color:green;
-  }
-  .b9 {
-
-  }
-  .two {
-
-  }
-  .m3 {
-
-  }
-  .three {
-
-  }
-  .four {
-
-  }
-  .b5 {
-
-  }
-  .five {
-
-  }
-  .b6 {
-
-  }
-  .six {
-
-  }
-  .m7 {
-
-  }
-  .seven {
-
-  }
-
   .fullborder {
     border: solid black 1px;
   }
+
+  /* fretboard colors defined in App.vue style */
 
 </style>
