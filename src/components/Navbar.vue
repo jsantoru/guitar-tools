@@ -22,13 +22,10 @@
         <!-- FILTER -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFilter" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Filter (<b>None</b>)
+            Filter (<b>{{filterName}}</b>)
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a v-for="filterOption in filterOptions" class="dropdown-item" @click="selectFilter(filterOption)">{{filterOption.name}}</a>
           </div>
         </li>
       </ul>
@@ -48,17 +45,47 @@
         return {
           rootNoteOptions: [
             "C","D"
+          ],
+
+          filterOptions: [
+            {
+              name:"None",
+              intervalIds:["r","b9", "2", "m3", "3","4", "b5", "5", "b6", "6", "m7", "7"]
+            },
+            {
+              name:"Major",
+              intervalIds:["r","3","5"]
+            }
           ]
         }
     },
     computed: {
       rootNote() {
           return this.$root.$data.rootNote;
+      },
+      filterName() {
+          return this.$root.$data.filterName;
       }
     },
     methods: {
       selectRootNote(rootNote) {
         this.$root.$data.rootNote = rootNote;
+      },
+      selectFilter(filter) {
+        this.$root.$data.filterName = filter.name;
+
+        console.log(filter);
+
+        // update the selected intervals based on the filter
+        this.$root.$data.intervals.forEach(function(item) {
+            if(filter.intervalIds.includes(item.id)) {
+                item.isSelected = true;
+            }
+            else {
+                item.isSelected = false;
+            }
+        });
+
       }
     }
   }

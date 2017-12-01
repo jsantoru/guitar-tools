@@ -11,6 +11,7 @@ new Vue({
   el: '#app',
   data: {
     rootNote: "C",
+    filterName: "None",
     intervals: [
       {id:"r", name:"Root", isSelected:true, class:"r"},
       {id:"b9", name:"b9", isSelected:true, class:"b9"},
