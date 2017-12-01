@@ -4,16 +4,19 @@
     <div class="fretboard">
       <br/>
         <div class="fret" v-for="(fret, index) in fretboard">
-          <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
+          <div class="note" :class="{fullborder: !note.isLast}" v-for="(note, noteIndex) in fret">
             <div :class="{hide:shouldHide(note.intervalId)}">
               <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.intervalId)">{{note.intervalId}}</span>
+            </div>
+            <div class="dotWrapper">
+              <span v-if="shouldShowDot(noteIndex, index+1)" class="dot"></span>
             </div>
           </div>
           <div class="fretNum">
             <span v-if="shouldShowFret(index+1)" >({{index + 1}})</span>
           </div>
         </div>
-    </div>
+      </div>
     <div class="right"></div>
   </div>
 </template>
@@ -69,12 +72,17 @@
     },
 
     methods: {
+      shouldShowDot(noteIndex, fretNum) {
+        return noteIndex == 2 && this.shouldShowFret(fretNum);
+      },
+
       shouldShowFret(fretNum) {
         if(this.fretNumsToShow.includes(fretNum)) {
             return true;
         }
         return false;
       },
+
       shouldHide(intervalId) {
         var filtered = this.intervals.filter(item => item.id == intervalId)[0];
         if(filtered && filtered.isSelected) {
@@ -125,7 +133,6 @@
     },
 
     created: function() {
-      // build the fretboard
       this.buildFretboard();
     }
   }
@@ -133,6 +140,25 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+  .shaded {
+    background-color:gray;
+  }
+
+  .dotWrapper {
+    width:100%;
+    text-align:center;
+  }
+
+  .dot {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+
+    background-color:black;
+    border: solid black 2px;
+  }
+
   .fretNum {
     width:25px;
     border-bottom: solid black 2px;
@@ -141,7 +167,8 @@
   }
 
   .hide {
-    display:none;
+    /*display:none;*/
+    visibility:hidden;
   }
 
   .fretboard-container {
@@ -170,6 +197,7 @@
 
   .note {
     flex:1;
+    position:relative;
   }
 
   .notebadge {
