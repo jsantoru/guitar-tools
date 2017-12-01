@@ -1,18 +1,12 @@
 <template>
   <div class="sidebar">
     <div class="btn-group-vertical btn-group-sm wide" role="group">
-      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary r">Root</span></button>
-      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary b9">b9</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary two">2/9</span></button>
-      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary m3">m3/#9</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary three">3</span></button>
-      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary four">4</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary b5">#4/b5</span></button>
-      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary five">5</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary b6">#5/b6</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary six">6</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary m7">m7</span></button>
-      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary seven">7</span></button>
+      <button type="button" class="btn"
+        v-for="interval in intervals"
+        :class="{'btn-primary': interval.isSelected, 'btn-secondary': !interval.isSelected}"
+        @click="toggle(interval)">
+        <span class="badge badge-pill" :class="interval.class">{{interval.name}}</span>
+      </button>
     </div>
   </div>
 </template>
@@ -22,6 +16,12 @@
     name: 'Sidebar',
     data () {
       return {
+          intervals: this.$root.$data.intervals
+      }
+    },
+    methods: {
+      toggle(interval) {
+        interval.isSelected = !interval.isSelected;
       }
     }
   }
