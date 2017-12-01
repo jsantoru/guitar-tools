@@ -107,7 +107,6 @@ html, body, .container {
 }
 .five {
   background-color:green;
-
 }
 .b6 {
   background-color:lightblue;

@@ -1,18 +1,18 @@
 <template>
   <div class="sidebar">
     <div class="btn-group-vertical btn-group-sm wide" role="group">
-      <button type="button" class="btn btn-primary"><span class="badge badge-light">Root</span></button>
-      <button type="button" class="btn btn-primary">b9</button>
-      <button type="button" class="btn btn-secondary">2/9</button>
-      <button type="button" class="btn btn-primary">m3/#9</button>
-      <button type="button" class="btn btn-secondary">M3</button>
-      <button type="button" class="btn btn-primary">4</button>
-      <button type="button" class="btn btn-secondary">#4/b5</button>
-      <button type="button" class="btn btn-primary">5</button>
-      <button type="button" class="btn btn-secondary">#5/b6</button>
-      <button type="button" class="btn btn-secondary">6</button>
-      <button type="button" class="btn btn-secondary">m7</button>
-      <button type="button" class="btn btn-secondary">7</button>
+      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary r">Root</span></button>
+      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary b9">b9</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary two">2/9</span></button>
+      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary m3">m3/#9</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary three">3</span></button>
+      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary four">4</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary b5">#4/b5</span></button>
+      <button type="button" class="btn btn-primary"><span class="badge badge-pill badge-primary five">5</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary b6">#5/b6</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary six">6</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary m7">m7</span></button>
+      <button type="button" class="btn btn-secondary"><span class="badge badge-pill badge-primary seven">7</span></button>
     </div>
   </div>
 </template>
@@ -22,8 +22,6 @@
     name: 'Sidebar',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
-
       }
     }
   }

@@ -45,6 +45,7 @@
       getClass(interval) {
         return this.intervalClass[interval];
       },
+
       getNextInterval(interval) {
         let index = this.intervals.indexOf(interval);
         if(index == 11) {
