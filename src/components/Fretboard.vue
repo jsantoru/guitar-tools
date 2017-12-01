@@ -5,8 +5,8 @@
       <br/>
         <div class="fret" v-for="fret in fretboard">
           <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
-            <div :class="{hide:shouldHide(note.interval)}">
-              <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.interval)">{{note.interval}}</span>
+            <div :class="{hide:shouldHide(note.intervalId)}">
+              <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.intervalId)">{{note.intervalId}}</span>
             </div>
           </div>
         </div>
@@ -21,12 +21,17 @@
 
     data () {
       return {
-        selectedIntervals: this.$root.$data.intervals,
+        intervals: this.$root.$data.intervals,
+        rootNote: "C",
         numFrets: 12,
-        intervals : ["r", "b9", "2", "m3", "3", "4", "b5", "5", "b6", "6", "m7", "7"],
-        firstFret : [{interval:"4"},{interval:"m7"},{interval:"m3"},{interval:"b6"},{interval:"r"},{interval:"4", isLast:true}],
         fretboard : [],
-        intervalClass :
+
+        rootFirstFret: {
+          "C": [{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"b6"},{intervalId:"r"},{intervalId:"4", isLast:true}]
+          // TODO: remaining keys
+        },
+
+        intervalIdClass :
           {
             "r":"r",
             "b9":"b9",
@@ -44,25 +49,31 @@
       }
     },
 
+    computed: {
+      firstFret() {
+        return this.rootFirstFret[this.rootNote];
+      }
+    },
+
     methods: {
-      shouldHide(interval) {
-        var filtered = this.selectedIntervals.filter(item => item.id == interval)[0];
+      shouldHide(intervalId) {
+        var filtered = this.intervals.filter(item => item.id == intervalId)[0];
         if(filtered && filtered.isSelected) {
             return false;
         }
         return true;
       },
 
-      getClass(interval) {
-        return this.intervalClass[interval];
+      getClass(intervalId) {
+        return this.intervalIdClass[intervalId];
       },
 
-      getNextInterval(interval) {
-        let index = this.intervals.indexOf(interval);
+      getNextIntervalId(intervalId) {
+        let index = this.intervals.map((e) => e.id).indexOf(intervalId);
         if(index == 11) {
-          return this.intervals[0];
+          return this.intervals[0].id;
         }
-        return this.intervals[index+1];
+        return this.intervals[index+1].id;
       },
 
       buildFretboard() {
@@ -80,9 +91,9 @@
         let nextFret = [];
         // build the next fret
         for(let i=0; i<prevFret.length; i++) {
-          let currInterval = prevFret[i].interval;
-          let nextIntervalObj = {}
-          nextIntervalObj.interval = this.getNextInterval(currInterval);
+          let currInterval = prevFret[i].intervalId;
+          let nextIntervalObj = {};
+          nextIntervalObj.intervalId = this.getNextIntervalId(currInterval);
           if(i == prevFret.length-1) {
             nextIntervalObj.isLast = true;
           }
