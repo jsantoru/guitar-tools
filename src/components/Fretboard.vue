@@ -5,7 +5,9 @@
       <br/>
         <div class="fret" v-for="fret in fretboard">
           <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
-            <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.interval)">{{note.interval}}</span>
+            <div :class="{hide:shouldHide(note.interval)}">
+              <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.interval)">{{note.interval}}</span>
+            </div>
           </div>
         </div>
     </div>
@@ -19,6 +21,7 @@
 
     data () {
       return {
+        selectedIntervals: this.$root.$data.intervals,
         numFrets: 12,
         intervals : ["r", "b9", "2", "m3", "3", "4", "b5", "5", "b6", "6", "m7", "7"],
         firstFret : [{interval:"4"},{interval:"m7"},{interval:"m3"},{interval:"b6"},{interval:"r"},{interval:"4", isLast:true}],
@@ -42,6 +45,14 @@
     },
 
     methods: {
+      shouldHide(interval) {
+        var filtered = this.selectedIntervals.filter(item => item.id == interval)[0];
+        if(filtered && filtered.isSelected) {
+            return false;
+        }
+        return true;
+      },
+
       getClass(interval) {
         return this.intervalClass[interval];
       },
@@ -92,6 +103,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .hide {
+    display:none;
+  }
+
   .fretboard-container {
     display:flex;
     flex-direction:row;
