@@ -3,11 +3,14 @@
     <div class="left"></div>
     <div class="fretboard">
       <br/>
-        <div class="fret" v-for="fret in fretboard">
+        <div class="fret" v-for="(fret, index) in fretboard">
           <div class="note" :class="{fullborder: !note.isLast}" v-for="note in fret">
             <div :class="{hide:shouldHide(note.intervalId)}">
               <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.intervalId)">{{note.intervalId}}</span>
             </div>
+          </div>
+          <div class="fretNum">
+            <span v-if="shouldShowFret(index+1)" >({{index + 1}})</span>
           </div>
         </div>
     </div>
@@ -22,7 +25,7 @@
     data () {
       return {
         intervals: this.$root.$data.intervals,
-        numFrets: 12,
+        numFrets: 21,
         fretboard : [],
 
         rootFirstFret: {
@@ -45,7 +48,8 @@
             "6":"six",
             "m7":"m7",
             "7":"seven"
-          }
+          },
+        fretNumsToShow: [1,3,5,7,9,12,15,17,19,21]
       }
     },
 
@@ -65,6 +69,12 @@
     },
 
     methods: {
+      shouldShowFret(fretNum) {
+        if(this.fretNumsToShow.includes(fretNum)) {
+            return true;
+        }
+        return false;
+      },
       shouldHide(intervalId) {
         var filtered = this.intervals.filter(item => item.id == intervalId)[0];
         if(filtered && filtered.isSelected) {
@@ -123,6 +133,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .fretNum {
+    width:25px;
+    border-bottom: solid black 2px;
+    padding-top:12px;
+    text-align: center;
+  }
+
   .hide {
     display:none;
   }
@@ -157,7 +174,7 @@
 
   .notebadge {
     position: relative;
-    top:15px;
+    top:12px;
     left:-10px;
   }
 

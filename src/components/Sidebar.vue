@@ -27,15 +27,11 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .sidebar {
     text-align:center;
   }
   .wide {
     width:100%;
-  }
-  .r {
-    background-color:green;
   }
 </style>

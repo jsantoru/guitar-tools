@@ -103,13 +103,13 @@ html, body, .container {
   background-color:blueviolet;
 }
 .b5 {
-  background-color:orangered;
+  background-color:darksalmon;
 }
 .five {
   background-color:green;
 }
 .b6 {
-  background-color:lightblue;
+  background-color:cadetblue;
 }
 .six {
   background-color:hotpink;
