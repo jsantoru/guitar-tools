@@ -35,7 +35,7 @@
     data () {
       return {
         intervals: this.$root.$data.intervals,
-        numFrets: 21,
+        numFrets: 22,
         fretboard : [],
 
         rootOpen: {
