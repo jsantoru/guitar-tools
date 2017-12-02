@@ -3,18 +3,24 @@
     <div class="left"></div>
     <div class="fretboard">
       <br/>
-        <div class="fret" v-for="(fret, index) in fretboard">
-          <!-- show a full border for all rows except the first and all columns except the last -->
-          <div class="note" :class="{fullborder: index != 0 && noteIndex != 5}" v-for="(note, noteIndex) in fret">
+        <div class="fret" v-for="(fret, fretIndex) in fretboard">
+          <!-- show a full border for all rows except the first and all columns except the last, show a nut on the first -->
+          <!-- add styling for strings/borders that do and dont overlap-->
+          <div class="note"
+               v-for="(note, stringIndex) in fret"
+               :class="{fullborder: fretIndex != 0 && stringIndex != 5,
+                        nut: fretIndex == 0 && stringIndex != 5,
+                        leftstring: fretIndex != 0 && stringIndex == 0,
+                        rightstring: fretIndex != 0 && stringIndex == 4}">
             <div :class="{hide:shouldHide(note.intervalId)}">
               <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.intervalId)">{{note.intervalId}}</span>
             </div>
             <div class="dotWrapper">
-              <div v-if="shouldShowDot(noteIndex, index)" class="dot">&nbsp;</div>
+              <div v-if="shouldShowDot(stringIndex, fretIndex)" class="dot">&nbsp;</div>
             </div>
           </div>
           <div class="fretNum">
-            <span v-if="shouldShowFret(index)">({{index}})</span>
+            <span v-if="shouldShowFret(fretIndex)">({{fretIndex}})</span>
           </div>
         </div>
       </div>
@@ -38,24 +44,10 @@
           // TODO: remaining keys
         },
 
-        intervalIdClass :
-          {
-            "r":"r",
-            "b9":"b9",
-            "2":"two",
-            "m3":"m3",
-            "3":"three",
-            "4":"four",
-            "b5":"b5",
-            "5":"five",
-            "b6":"b6",
-            "6":"six",
-            "m7":"m7",
-            "7":"seven"
-          },
         fretNumsToShow: [1,3,5,7,9,12,15,17,19,21],
         fretNumsOneDot: [1,3,5,7,9,15,17,19,21],
         fretNumsTwoDots: [12]
+
       }
     },
 
@@ -101,7 +93,11 @@
       },
 
       getClass(intervalId) {
-        return this.intervalIdClass[intervalId];
+        var filtered = this.intervals.filter(item => item.id == intervalId)[0];
+        if(filtered) {
+          return filtered.class;
+        }
+        return "";
       },
 
       getNextIntervalId(intervalId) {
@@ -120,7 +116,6 @@
             this.fretboard.push(fret);
             prevFret = fret;
         }
-        //console.log(this.fretboard);
       },
 
       buildNextFret(prevFret) {
@@ -133,7 +128,6 @@
 
           nextFret[i] = nextIntervalObj;
         }
-        //console.log(nextFret);
         return nextFret;
       }
     },
@@ -212,7 +206,26 @@
   }
 
   .fullborder {
-    border: solid black 1px;
+
+    /* fret */
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+
+    /* string */
+    border-left: solid darkgray 1px;
+    border-right: solid darkgray 1px;
+  }
+
+  .leftstring {
+    border-left: solid dimgray 2px;
+  }
+
+  .rightstring {
+    border-right: solid dimgray 2px;
+  }
+
+  .nut {
+    border-bottom: solid black 10px;
   }
 
   /* fretboard colors defined in App.vue style */
