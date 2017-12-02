@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="bottom">
-        BOTTOM
+        &copy; Santoru Bros. Music 2017 | All Rights Reserved
       </div>
     </div>
 </template>
@@ -67,8 +67,9 @@ html, body, .container {
 }
 
 .bottom {
-  /*height:20px;*/
-  flex:.5; /* relative size to divs at the same level */
+  height:20px;
+  /*flex:.25; /* relative size to divs at the same level */
+  font-size:12px;
 }
 
 

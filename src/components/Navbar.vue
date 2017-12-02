@@ -1,14 +1,15 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#/">
-      <img src="http://agilepartners.com/images/ttk/ttk-icon-large-shad.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <!-- https://cdn4.iconfinder.com/data/icons/rock-music-instruments/154/acoustic-guitar-music-round-128.png -->
+      <img src="../assets/acoustic-guitar-music-round-128.png" width="35" height="35" class="d-inline-block align-top" alt="">
       Guitar Tools</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
+      <ul class="navbar-nav mr-auto">
         <!-- ROOT NOTE -->
         <li class="nav-item dropdown first">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRootNote" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -109,9 +110,9 @@
 
 <style>
 
-  .first {
+  /*.first {
     padding-left:100px;
-  }
+  }*/
 
   .navbar {
     z-index: 9999;
