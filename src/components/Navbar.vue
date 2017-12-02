@@ -58,6 +58,7 @@
             "C", "D", "E"
           ],
 
+          // TODO: add groups (triads, scales, etc) scales: major, minor, major penatonic, minor penatonic, etc
           filterOptions: [
             {
               name:"None",
