@@ -45,7 +45,7 @@
     data() {
         return {
           rootNoteOptions: [
-            "C","D"
+            "C", "D", "E"
           ],
 
           filterOptions: [

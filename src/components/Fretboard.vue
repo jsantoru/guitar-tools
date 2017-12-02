@@ -4,16 +4,17 @@
     <div class="fretboard">
       <br/>
         <div class="fret" v-for="(fret, index) in fretboard">
-          <div class="note" :class="{fullborder: !note.isLast}" v-for="(note, noteIndex) in fret">
+          <!-- show a full border for all rows except the first and all columns except the last -->
+          <div class="note" :class="{fullborder: index != 0 && noteIndex != 5}" v-for="(note, noteIndex) in fret">
             <div :class="{hide:shouldHide(note.intervalId)}">
               <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.intervalId)">{{note.intervalId}}</span>
             </div>
             <div class="dotWrapper">
-              <div v-if="shouldShowDot(noteIndex, index+1)" class="dot">&nbsp;</div>
+              <div v-if="shouldShowDot(noteIndex, index)" class="dot">&nbsp;</div>
             </div>
           </div>
           <div class="fretNum">
-            <span v-if="shouldShowFret(index+1)">({{index + 1}})</span>
+            <span v-if="shouldShowFret(index)">({{index}})</span>
           </div>
         </div>
       </div>
@@ -30,9 +31,10 @@
         numFrets: 21,
         fretboard : [],
 
-        rootFirstFret: {
-          "C": [{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"b6"},{intervalId:"r"},{intervalId:"4", isLast:true}],
-          "D": [{intervalId:"m3"},{intervalId:"b6"},{intervalId:"b9"},{intervalId:"b5"},{intervalId:"m7"},{intervalId:"m3", isLast:true}]
+        rootOpen: {
+          "C": [{intervalId:"3"},{intervalId:"6"},{intervalId:"2"},{intervalId:"5"},{intervalId:"7"},{intervalId:"3"}],
+          "D": [{intervalId:"2"},{intervalId:"5"},{intervalId:"r"},{intervalId:"4"},{intervalId:"6"},{intervalId:"2"}],
+          "E": [{intervalId:"r"},{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"5"},{intervalId:"r"}]
           // TODO: remaining keys
         },
 
@@ -61,8 +63,8 @@
       rootNote() {
           return this.$root.$data.rootNote;
       },
-      firstFret() {
-        return this.rootFirstFret[this.rootNote];
+      open() {
+        return this.rootOpen[this.rootNote];
       }
     },
 
@@ -111,9 +113,9 @@
       },
 
       buildFretboard() {
-        this.fretboard = [this.firstFret];
-        let prevFret = this.firstFret;
-        for(let i=0; i<this.numFrets-1; i++) {
+        this.fretboard = [this.open];
+        let prevFret = this.open;
+        for(let i=0; i<this.numFrets; i++) {
             let fret = this.buildNextFret(prevFret);
             this.fretboard.push(fret);
             prevFret = fret;
@@ -128,9 +130,6 @@
           let currInterval = prevFret[i].intervalId;
           let nextIntervalObj = {};
           nextIntervalObj.intervalId = this.getNextIntervalId(currInterval);
-          if(i == prevFret.length-1) {
-            nextIntervalObj.isLast = true;
-          }
 
           nextFret[i] = nextIntervalObj;
         }
