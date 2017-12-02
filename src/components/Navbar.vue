@@ -10,6 +10,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+        <!-- TUNING -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTuning" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tuning (<b>Standard | E A D G B E</b>)
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" >Standard - E A D G B E</a>
+          </div>
+        </li>
+
         <!-- ROOT NOTE -->
         <li class="nav-item dropdown first">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRootNote" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
