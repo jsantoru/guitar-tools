@@ -3,9 +3,7 @@
       <div class="top"><navbar></navbar></div>
       <div class="middle">
         <div class="middle-sidebar">
-          <div class="middle-sidebar-top">
-            <sidebar></sidebar>
-          </div>
+          <sidebar></sidebar>
         </div>
         <div class="middle-content">
           <router-view></router-view>
@@ -59,17 +57,8 @@ html, body, .container {
 }
 
 .middle-sidebar {
-  flex: .5; /* relative size to divs at the same level */
+  flex: .75; /* relative size to divs at the same level */
   overflow: auto; /* enable scroll bar */
-
-  /* needed for its child divs */
-  display: flex; /* needed at the parent level, so child divs can use 'flex: n' */
-  flex-direction: column; /* child divs stack vertically */
-}
-
-.middle-sidebar-top {
-  flex: 9; /* 90% of the sidebar */
-  overflow: auto; /* vertical scrollbar */
 }
 
 .middle-content {

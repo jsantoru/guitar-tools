@@ -194,7 +194,6 @@
 
   .fret {
     flex:10;
-
     display: flex;
     flex-direction:row;
 
