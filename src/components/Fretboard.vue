@@ -9,7 +9,7 @@
           <div class="note"
                v-for="(note, stringIndex) in fret"
                :class="{fullborder: fretIndex != 0 && stringIndex != 5,
-                        nut: fretIndex == 0 && stringIndex != 5,
+                        nut: fretIndex == 1 && stringIndex != 5,
                         leftstring: fretIndex != 0 && stringIndex == 0,
                         rightstring: fretIndex != 0 && stringIndex == 4}">
             <div :class="{hide:shouldHide(note.intervalId)}">
@@ -19,7 +19,8 @@
               <div v-if="shouldShowDot(stringIndex, fretIndex)" class="dot">&nbsp;</div>
             </div>
           </div>
-          <div class="fretNum">
+          <div class="fretNum" :class="{nutFretNum:fretIndex == 1}">
+            <span v-if="fretIndex == 0">Open</span>
             <span v-if="shouldShowFret(fretIndex)">({{fretIndex}})</span>
           </div>
         </div>
@@ -206,7 +207,6 @@
   }
 
   .fullborder {
-
     /* fret */
     border-top: solid black 2px;
     border-bottom: solid black 2px;
@@ -225,7 +225,7 @@
   }
 
   .nut {
-    border-bottom: solid black 10px;
+    border-top: solid black 10px;
   }
 
   /* fretboard colors defined in App.vue style */
