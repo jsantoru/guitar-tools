@@ -9,11 +9,11 @@
               <span class="badge badge-pill badge-primary notebadge" :class="getClass(note.intervalId)">{{note.intervalId}}</span>
             </div>
             <div class="dotWrapper">
-              <span v-if="shouldShowDot(noteIndex, index+1)" class="dot"></span>
+              <div v-if="shouldShowDot(noteIndex, index+1)" class="dot">&nbsp;</div>
             </div>
           </div>
           <div class="fretNum">
-            <span v-if="shouldShowFret(index+1)" >({{index + 1}})</span>
+            <span v-if="shouldShowFret(index+1)">({{index + 1}})</span>
           </div>
         </div>
       </div>
@@ -24,7 +24,6 @@
 <script>
   export default {
     name: 'Fretboard',
-
     data () {
       return {
         intervals: this.$root.$data.intervals,
@@ -52,7 +51,9 @@
             "m7":"m7",
             "7":"seven"
           },
-        fretNumsToShow: [1,3,5,7,9,12,15,17,19,21]
+        fretNumsToShow: [1,3,5,7,9,12,15,17,19,21],
+        fretNumsOneDot: [1,3,5,7,9,15,17,19,21],
+        fretNumsTwoDots: [12]
       }
     },
 
@@ -73,7 +74,13 @@
 
     methods: {
       shouldShowDot(noteIndex, fretNum) {
-        return noteIndex == 2 && this.shouldShowFret(fretNum);
+        return this.isSingleDotSpace(noteIndex, fretNum) || this.isDoubleDotSpace(noteIndex, fretNum);
+      },
+      isSingleDotSpace(noteIndex, fretNum) {
+        return noteIndex == 2 && this.fretNumsOneDot.includes(fretNum);
+      },
+      isDoubleDotSpace(noteIndex, fretNum) {
+        return (noteIndex == 1 || noteIndex == 3) && this.fretNumsTwoDots.includes(fretNum);
       },
 
       shouldShowFret(fretNum) {
@@ -111,7 +118,7 @@
             this.fretboard.push(fret);
             prevFret = fret;
         }
-        console.log(this.fretboard);
+        //console.log(this.fretboard);
       },
 
       buildNextFret(prevFret) {
@@ -125,7 +132,7 @@
             nextIntervalObj.isLast = true;
           }
 
-          nextFret[i] = nextIntervalObj
+          nextFret[i] = nextIntervalObj;
         }
         //console.log(nextFret);
         return nextFret;
@@ -140,7 +147,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
   .shaded {
     background-color:gray;
   }
@@ -151,16 +157,16 @@
   }
 
   .dot {
+    display:inline-block;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 10px;
+    height: 10px;
 
     background-color:black;
-    border: solid black 2px;
   }
 
   .fretNum {
-    width:25px;
+    width:10%;
     border-bottom: solid black 2px;
     padding-top:12px;
     text-align: center;
@@ -181,7 +187,7 @@
   }
 
   .fretboard {
-    flex:8;
+    flex:4;
     display:flex;
     flex-direction:column;
   }
@@ -198,26 +204,13 @@
   .note {
     flex:1;
     position:relative;
+    width:30px;
   }
 
   .notebadge {
     position: relative;
     top:12px;
     left:-10px;
-  }
-
-  .circle {
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-
-    background: red;
-
-    position: relative;
-    top:15px;
-    left:-10px;
-
-    text-align:center;
   }
 
   .fullborder {

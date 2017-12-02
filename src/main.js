@@ -18,7 +18,7 @@ new Vue({
       {id:"2", name:"2/9", isSelected:true, class:"two"},
       {id:"m3", name:"m3", isSelected:true, class:"m3"},
       {id:"3", name:"3", isSelected:true, class:"three"},
-      {id:"4", name:"four", isSelected:true, class:"four"},
+      {id:"4", name:"4", isSelected:true, class:"four"},
       {id:"b5", name:"#4/b5", isSelected:true, class:"b5"},
       {id:"5", name:"5", isSelected:true, class:"five"},
       {id:"b6", name:"#5/b6", isSelected:true, class:"b6"},
