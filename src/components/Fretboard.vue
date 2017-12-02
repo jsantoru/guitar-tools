@@ -45,8 +45,8 @@
           // TODO: remaining keys
         },
 
-        fretNumsToShow: [1,3,5,7,9,12,15,17,19,21],
-        fretNumsOneDot: [1,3,5,7,9,15,17,19,21],
+        fretNumsToShow: [3,5,7,9,12,15,17,19,21],
+        fretNumsOneDot: [3,5,7,9,15,17,19,21],
         fretNumsTwoDots: [12]
 
       }
