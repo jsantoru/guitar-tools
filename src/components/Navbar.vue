@@ -23,7 +23,7 @@
         <!-- ROOT NOTE -->
         <li class="nav-item dropdown first">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRootNote" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Root Note (<b>{{rootNote}}</b>)
+            Root (<b>{{rootNote}}</b>)
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a v-for="rootNoteOption in rootNoteOptions" class="dropdown-item" @click="selectRootNote(rootNoteOption)">{{rootNoteOption}}</a>
@@ -65,24 +65,40 @@
               intervalIds:["r","b9", "2", "m3", "3","4", "b5", "5", "b6", "6", "m7", "7"]
             },
             {
-              name:"Major",
+              name:"Major (chord)",
               intervalIds:["r","3","5"]
             },
             {
-              name:"Major 7",
+              name:"Major 7 (chord)",
               intervalIds:["r","3","5", "7"]
             },
             {
-              name:"Minor",
+              name:"Minor (chord)",
               intervalIds:["r","m3","5"]
             },
             {
-              name:"Minor 7",
+              name:"Minor 7 (chord)",
               intervalIds:["r","m3","5", "m7"]
             },
             {
-              name:"Altered Dominant",
+              name:"Altered Dominant (chord)",
               intervalIds:["r","b9","m3","3","b5","b6","m7"]
+            },
+            {
+              name:"Major (scale)",
+              intervalIds:["r", "2", "3", "4", "5", "6", "7"]
+            },
+            {
+              name:"Major Pentatonic (scale)",
+              intervalIds:["r", "2", "3", "5", "6"]
+            },
+            {
+              name:"Minor (scale)",
+              intervalIds:["r", "2", "m3", "4", "5", "b6", "m7"]
+            },
+            {
+              name:"Minor Penatonic (scale)",
+              intervalIds:["r", "m3", "4", "5", "m7"]
             }
           ]
         }
