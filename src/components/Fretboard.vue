@@ -40,11 +40,16 @@
 
         rootOpen: {
           "C": [{intervalId:"3"},{intervalId:"6"},{intervalId:"2"},{intervalId:"5"},{intervalId:"7"},{intervalId:"3"}],
+          "C#/Db": [{intervalId:"m3"},{intervalId:"b6"},{intervalId:"b9"},{intervalId:"b5"},{intervalId:"m7"},{intervalId:"m3"}],
           "D": [{intervalId:"2"},{intervalId:"5"},{intervalId:"r"},{intervalId:"4"},{intervalId:"6"},{intervalId:"2"}],
+          "D#/Eb": [{intervalId:"b9"},{intervalId:"b5"},{intervalId:"7"},{intervalId:"3"},{intervalId:"b6"},{intervalId:"b9"}],
           "E": [{intervalId:"r"},{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"5"},{intervalId:"r"}],
           "F": [{intervalId:"7"},{intervalId:"3"},{intervalId:"6"},{intervalId:"2"},{intervalId:"b5"},{intervalId:"7"}],
+          "F#/Gb": [{intervalId:"m7"},{intervalId:"m3"},{intervalId:"b6"},{intervalId:"b9"},{intervalId:"4"},{intervalId:"m7"}],
           "G": [{intervalId:"6"},{intervalId:"2"},{intervalId:"5"},{intervalId:"r"},{intervalId:"3"},{intervalId:"6"}],
+          "G#/Ab": [{intervalId:"b6"},{intervalId:"b9"},{intervalId:"b5"},{intervalId:"7"},{intervalId:"m3"},{intervalId:"b6"}],
           "A": [{intervalId:"5"},{intervalId:"r"},{intervalId:"4"},{intervalId:"m7"},{intervalId:"2"},{intervalId:"5"}],
+          "A#/Bb": [{intervalId:"b5"},{intervalId:"7"},{intervalId:"3"},{intervalId:"6"},{intervalId:"b9"},{intervalId:"b5"}],
           "B": [{intervalId:"4"},{intervalId:"m7"},{intervalId:"m3"},{intervalId:"b6"},{intervalId:"r"},{intervalId:"4"}],
 
           // TODO: remaining keys
