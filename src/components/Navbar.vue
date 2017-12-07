@@ -55,7 +55,7 @@
     data() {
         return {
           rootNoteOptions: [
-            "C", "D", "E"
+            "C", "D", "E", "F", "G", "A", "B"
           ],
 
           // TODO: add groups (triads, scales, etc) scales: major, minor, major penatonic, minor penatonic, etc
